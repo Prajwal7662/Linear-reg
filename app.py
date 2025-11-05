@@ -1,37 +1,39 @@
 import streamlit as st
-import pickle
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
-st.set_page_config(page_title="💡 Insurance Cost Prediction App", page_icon="💡", layout="centered")
+st.set_page_config(page_title="💡 Insurance Cost Prediction App", page_icon="💡")
 
 st.title("💡 Insurance Cost Prediction App")
-st.write("Predict medical insurance cost based on **Age, BMI & Smoking habits**.")
+st.write("Predict medical insurance cost based on **Age, BMI, and Smoking habits** — No model.pkl needed!")
 
-# Try to load model
-try:
-    model = pickle.load(open("model.pkl", "rb"))
-except FileNotFoundError:
-    st.error("❌ model.pkl not found! Please upload or include it in the same folder as app.py.")
-    st.stop()
+# Training data (small built-in dataset)
+age = np.array([20, 25, 30, 35, 40, 45, 50, 55, 60])
+bmi = np.array([19, 22, 25, 27, 30, 33, 35, 28, 26])
+smoker = np.array([0, 0, 0, 1, 1, 1, 0, 0, 1])
+charges = np.array([2000, 2500, 3000, 12000, 15000, 18000, 4000, 5000, 20000])
 
-# Input fields
-age = st.number_input("Enter Age", min_value=18, max_value=100, step=1)
-bmi = st.number_input("Enter BMI (Body Mass Index) — leave 0 if unknown", min_value=0.0, max_value=60.0, step=0.1)
-smoker = st.selectbox("Are you a smoker?", ["No", "Yes"])
+# Train model automatically
+X = np.column_stack((age, bmi, smoker))
+model = LinearRegression()
+model.fit(X, charges)
 
-# Predict BMI if not known
-if bmi == 0:
-    st.info("📏 You didn’t enter BMI — estimating based on Age.")
-    bmi = 18 + (age - 18) * 0.2  # simple formula (can adjust)
-    st.write(f"Estimated BMI: **{bmi:.1f}**")
+# User input
+user_age = st.number_input("Enter your Age:", min_value=18, max_value=100, value=25)
+user_bmi = st.number_input("Enter your BMI (if unknown, enter 0):", min_value=0.0, max_value=60.0, value=22.0)
+user_smoker = st.selectbox("Do you smoke?", ["No", "Yes"])
 
-# Convert smoker to numeric
-smoker_value = 1 if smoker == "Yes" else 0
+# Auto-estimate BMI if 0
+if user_bmi == 0:
+    user_bmi = 18 + (user_age - 18) * 0.25
+    st.info(f"📏 Estimated BMI: {user_bmi:.1f}")
 
-# Prepare input data
-input_data = np.array([[age, bmi, smoker_value]])
+smoker_val = 1 if user_smoker == "Yes" else 0
 
-# Predict
 if st.button("Predict Insurance Cost"):
+    input_data = np.array([[user_age, user_bmi, smoker_val]])
     prediction = model.predict(input_data)
     st.success(f"💰 Estimated Insurance Cost: ₹{prediction[0]:,.2f}")
+
+st.markdown("---")
+st.markdown("👨‍💻 Developed by **Prajwal Mavkar** | Streamlit ML Demo App")
