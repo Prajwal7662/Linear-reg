@@ -1,5 +1,6 @@
 # 🩺 Health Risk Prediction using Streamlit
 
+
 This project is a **Streamlit web application** that predicts health risk (or medical cost) based on three key input parameters — **Age**, **BMI**, and **Smoking Status** — using a pre-trained machine learning model.
 
 ---
