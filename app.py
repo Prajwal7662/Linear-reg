@@ -26,4 +26,4 @@ if st.button("Predict"):
 
 # Footer
 st.markdown("---")
-st.caption("Developed by Hrishikesh Bhapkar | Streamlit App for ML Model")
+st.caption("Developed by Prajwal Mavkar Streamlit App for ML Model")
