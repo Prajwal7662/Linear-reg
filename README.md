@@ -3,7 +3,7 @@
 
 This project is a **Streamlit web application** that predicts health risk (or medical cost) based on three key input parameters — **Age**, **BMI**, and **Smoking Status** — using a pre-trained machine learning model.
 
-Link - https://linear-reg-5ty8ozfeagjhhun8qerurv.streamlit.app/
+Link - https://tinyurl.com/Prajwalapp
 
 ---
 
