@@ -3,6 +3,8 @@
 
 This project is a **Streamlit web application** that predicts health risk (or medical cost) based on three key input parameters — **Age**, **BMI**, and **Smoking Status** — using a pre-trained machine learning model.
 
+Link - https://linear-reg-5ty8ozfeagjhhun8qerurv.streamlit.app/
+
 ---
 
 ## 📁 Project Structure
@@ -10,9 +12,6 @@ This project is a **Streamlit web application** that predicts health risk (or me
 ├── best_model.pkl # Trained ML model
 ├── requirements.txt # Required Python libraries
 └── README.md # Project documentation
-
-yaml
-Copy code
 
 ---
 
