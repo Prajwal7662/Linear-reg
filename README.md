@@ -1,7 +1,7 @@
-# 🩺 Health Risk Prediction using Streamlit
+# 🩺 Insurance Cost Prediction app using Streamlit
 
 
-This project is a **Streamlit web application** that predicts health risk (or medical cost) based on three key input parameters — **Age**, **BMI**, and **Smoking Status** — using a pre-trained machine learning model.
+This project is a **Streamlit web application** that predicts Insurance cost(or medical cost) based on three key input parameters — **Age**, **BMI**, and **Smoking Status** — using a pre-trained machine learning model.
 
 Link - https://tinyurl.com/Prajwalapp
 
